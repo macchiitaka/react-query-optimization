@@ -1,3 +1,11 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "extends": [
+    "@takamachi/eslint-config/presets/react-typescript-prettier",
+    "next/core-web-vitals",
+    "plugin:react/jsx-runtime"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  }
 }

@@ -1,0 +1,4 @@
+/.next
+/coverage
+*.d.ts
+!.*rc.js
