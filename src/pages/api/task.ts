@@ -1,4 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+// eslint-disable-next-line @next/next/no-server-import-in-page
+import type { NextRequest } from 'next/server';
 
 import type { Task } from '../../domain/task';
 
@@ -22,8 +23,16 @@ const MOCK_DATA: Data = [
   },
 ];
 
-const handler = (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  res.status(200).json(MOCK_DATA);
+const handler = (_: NextRequest) =>
+  new Response(JSON.stringify(MOCK_DATA), {
+    status: 200,
+    headers: {
+      'content-type': 'application/json',
+    },
+  });
+
+export const config = {
+  runtime: 'experimental-edge',
 };
 
 export default handler;
